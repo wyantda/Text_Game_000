@@ -1,7 +1,12 @@
 #include <iostream>
 #include <cstdarg>
 
+#include <map>
+
 using namespace std;
+
+map<string,bool> items;
+
 
 int getChoice(int numChoices, ...) {
     va_list args;
@@ -20,6 +25,7 @@ int getChoice(int numChoices, ...) {
         }
         cin >> response;
     }
+
     return response;
 }
 
