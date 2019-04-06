@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstdarg>
+#include <stdlib.h>
 
 #include <map>
 
@@ -11,7 +12,7 @@ map<string,bool> items;
 int getChoice(int numChoices, ...) {
     va_list args;
     va_start(args,numChoices); //numChoices is last named parameter
-   
+
     int response = -1;
    	cout << "Will you...";
    	for(int i = 1; i <= numChoices; ++i) {
@@ -31,15 +32,34 @@ int getChoice(int numChoices, ...) {
 
 int main(int argc, char** argv) {
 
-    cout << "Avast! You've been abducted by pirates!\n"
-         << "You are in a dark room, tied to a chair.\n"
-         << "What do you do?\n";
-    int response = getChoice(3,"Do nothing","Shake chair vigorously","Kill yourself");
-    if(response == 3) {
-        cout << "You are dead\n";
-    } else {
-        cout << "You are not dead\n";
-    }
+    sceneOne();
 
     return 0;
 }
+void sceneOne(){
+    cout << "Avast! You've been abducted by pirates!\n"
+        << "You are in a dark room, tied to a chair.\n"
+        << "What do you do?\n";
+    int response = getChoice(3,"Do nothing","Shake chair vigorously","Kill yourself");
+    switch (response) {
+        case 1: {
+                cout << "You do absolutly nothing. Being the completly chad genius you are, \nyou realize the best oppertunity is when the pirates least expect it." << endl;
+                sleep(1);
+                cout << "You wait." << endl;
+                sleep(1);
+                cout << "And wait." << endl;
+                sleep(1);
+                cout << "This might be a while. " << endl;
+                for(int i =0; i < 10; i++){
+                sleep(1);
+                cout << ".";
+                }
+                sceneOne();
+                break;
+                }
+        case 2: {
+        
+        }
+        case 3: {
+        }
+    }
