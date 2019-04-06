@@ -8,13 +8,17 @@ int getChoice(int numChoices, ...) {
     va_start(args,numChoices); //numChoices is last named parameter
    
     int response = -1;
+   	cout << "Will you...";
+   	for(int i = 1; i <= numChoices; ++i) {
+   	    cout << endl << i << ". " << va_arg(args,char*);
+   	}
     while(response < 1 || response > numChoices ) {
-   	    cout << "Will you...\n";
-   	    for(int i = 1; i <= numChoices; ++i) {
-   	        cout << i << ". " << va_arg(args,char*) << endl;
-   	    }
-   	    cout << ">>>";
-   	    cin >> response;
+   	    cout << "\n>>>";
+        if(cin.fail()) {
+            cin.clear();
+            cin.ignore();
+        }
+        cin >> response;
     }
     return response;
 }
