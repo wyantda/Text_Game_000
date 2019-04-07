@@ -52,8 +52,15 @@ void sceneOne(){
                 break;
                 }
         case 2: {
-        
+            cout << "You shake the chair vigorously. The rope falls to your feet." << endl;
+            cout << "Obviously these pirates were knot prepared to tie somebody up!" << endl;
+            cout << "You examine the room." << endl;
+            sceneTwo();
+            break;
         }
         case 3: {
         }
     }
+}
+void sceneTwo(){
+}
