@@ -13,6 +13,8 @@ map<string,bool> items;
 
 void sceneOne();
 void sceneTwo();
+void sceneThree();
+void sceneFour();
 
 void sleep(int seconds);
 
@@ -40,8 +42,8 @@ int getChoice(int numChoices, ...) {
 bool getYesNo(const string & text) {
     cout << text << endl
          << "(y/n)";
-    string response = "?";
-    while(response.compare("y") != 0 || response.compare("n") != 0) {
+    char response = '?';
+    while(response != 'y' && response != 'n') {
         cout << "\n>>>";
         if(cin.fail()) {
             cin.clear();
@@ -49,10 +51,7 @@ bool getYesNo(const string & text) {
         }
         cin >> response;
     }
-    if(response.compare("y") == 0) {
-        return true;
-    }
-    return false;
+    return response == 'y';
 }
 
 void sleep(int seconds) {
@@ -122,11 +121,11 @@ void sceneTwo(){
          << "There is a staircase leading up to a door.\n";
     int response = getChoice(2,"Go to the door","Look at the map");
     switch(response) {
-        case 1:
+        case 1: {
             cout << "You climb up the creaky stairs, and approach the door.\n"
                  << "The smell of salty sea air fills your nostrils when you get to the top.\n";
             bool response = getYesNo("The main deck must be through here. Do you want to open the door?\n");
-            if (response == 1){
+            if (response){
                 cout << "You open the door and gaze upon the main deck." << endl;
                 sceneThree();
             }
@@ -136,6 +135,7 @@ void sceneTwo(){
                 sceneFour();
             }
             break;
+        }
         case 2:
             cout << "You walk up to the map, and look at it closely in the dim light.\n"
                  << "You can tell that this boat is en route to the PIRATE ISLAND.\n";
