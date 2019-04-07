@@ -124,8 +124,17 @@ void sceneTwo(){
     switch(response) {
         case 1:
             cout << "You climb up the creaky stairs, and approach the door.\n"
-                 << "The smell of salty sea air fills your nostrils when you get to the top.\n"
-                 << "The main deck must be through here. Do you want to open the door?\n";
+                 << "The smell of salty sea air fills your nostrils when you get to the top.\n";
+            bool response = getYesNo("The main deck must be through here. Do you want to open the door?\n");
+            if (response == 1){
+                cout << "You open the door and gaze upon the main deck." << endl;
+                sceneThree();
+            }
+            else{
+                cout << "You decide not to step on the potentially pirate ridden main deck." << endl;
+                cout << "So you turn around and head back downstairs, avoiding any possible pirate gang bange that may have await you." << endl;
+                sceneFour();
+            }
             break;
         case 2:
             cout << "You walk up to the map, and look at it closely in the dim light.\n"
@@ -134,4 +143,8 @@ void sceneTwo(){
             break;
     }
 
+}
+void sceneThree(){
+}
+void sceneFour(){
 }
