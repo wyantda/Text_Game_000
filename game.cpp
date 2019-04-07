@@ -38,7 +38,21 @@ int getChoice(int numChoices, ...) {
 }
 
 bool getYesNo(const string & text) {
-    return true;
+    cout << text << endl
+         << "(y/n)";
+    string response = "?";
+    while(response.compare("y") != 0 || response.compare("n") != 0) {
+        cout << "\n>>>";
+        if(cin.fail()) {
+            cin.clear();
+            cin.ignore();
+        }
+        cin >> response;
+    }
+    if(response.compare("y") == 0) {
+        return true;
+    }
+    return false;
 }
 
 void sleep(int seconds) {
