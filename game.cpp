@@ -12,6 +12,8 @@ using namespace std;
 map<string,bool> items;
 
 void sceneOne();
+void sceneTwo();
+
 void sleep(int seconds);
 
 int getChoice(int numChoices, ...) {
@@ -33,6 +35,10 @@ int getChoice(int numChoices, ...) {
     }
 
     return response;
+}
+
+bool getYesNo(const string & text) {
+    return true;
 }
 
 void sleep(int seconds) {
@@ -96,4 +102,22 @@ void sceneOne(){
     }
 }
 void sceneTwo(){
+
+    cout << "The room is small and dark, lit only by cracks in the walls.\n"
+         << "There is a map on the far wall.\n"
+         << "There is a staircase leading up to a door.\n";
+    int response = getChoice(2,"Go to the door","Look at the map");
+    switch(response) {
+        case 1:
+            cout << "You climb up the creaky stairs, and approach the door.\n"
+                 << "The smell of salty sea air fills your nostrils when you get to the top.\n"
+                 << "The main deck must be through here. Do you want to open the door?\n";
+            break;
+        case 2:
+            cout << "You walk up to the map, and look at it closely in the dim light.\n"
+                 << "You can tell that this boat is en route to the PIRATE ISLAND.\n";
+                 sceneTwo();
+            break;
+    }
+
 }
