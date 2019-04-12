@@ -16,6 +16,9 @@ void sceneTwo();
 void sceneThree();
 void sceneFour();
 void sceneFive();
+void sceneSix();
+void sceneSeven();
+
 
 void sleep(int seconds);
 
@@ -147,32 +150,58 @@ void sceneTwo(){
 
 }
 void sceneThree(){
-    cout << "The light of the moon iluminates the deck of the ship.\n"
+    cout << "The light of the moon illuminates the deck of the ship.\n"
          << "It seems most of the pirates are below deck, as their voices echo from the entrance to the brig.\n"
          << "As you look for a way off the ship, two pirates emerge from a door across the deck.\n"
          << "They seem to both be drunk. They have not noticed you yet.\n";
-         int response = getChoice(3,"Eavesdrop on their conversation","Try to sneak by them","Wait to they leave");
+         int response = getChoice(3,"Eavesdrop on their conversation","Try to sneak by them","Wait until they leave");
         switch(response) {
             case 1: {
             cout << "You listen in on their conversation.\n"
                  << "\"Oy! Ya Wee Slag Clubber! Ya Be Cuffin Ma Main Squeeze Ain't Ya!\"\n"
                  << "\"Yu Barnicle Brain! Iv'e Never Even Met Ya Girl! Ya Blastfamous Bahooka!\"\n:
                  << "\"";
+                    break;
             }
             case 2: {
                         cout << "You attempt to sneak by the pirates to the other side of the ship."
                              << "One the";
             }
             case 3: {
+                cout << "You wait for the pirates to leave.\n";
+                sleep(2);
+                for(int i = 0; i < 3; ++i) {
+                    cout << ".";
+                    cout.flush();
+                    sleep(1);
+                }
+                cout << "\nOk you don't wait that long until the pirates leave.\n"
+                     << "The pirates go back down into the lower decks, muttering something about termites in peg legs\n"
+                     << "The deck is wide and open.\n";
+                if(!items["lantern"]) {
+                    cout << "There is a lantern above you.\n";
+                    items["lantern"] = getYesNo("Take it?");
+                }
+                int response2 = getChoice(3,"Follow the pirates","Turn back to the stairs","Explore the deck");
+                switch(response2) {
+                    case 1: sceneSix();
+                            break;
+                    case 2: sceneFour();
+                            break;
+                    case 3: sceneSeven();
+                            break;
+                }
+                break;
             }
         }
 }
+
 void sceneFour(){
     cout << "While walking back down the stairs, you notice there is a hole in the ceiling.\n"
          << "It is entirely unlit, and you can swear you hear rats scurrying about in it.\n";
     bool response = getYesNo("Do you enter the hole rather than continuing back down to the room?");
     if(response) {
-        cout << "You climb up into the ceiling hole, and begin feeling your way around.";
+        cout << "You climb up into the ceiling hole, and begin feeling your way around.\n";
         sceneFive();
     } else {
         sceneTwo();
@@ -184,7 +213,22 @@ void sceneFive() {
         cout << "You are in a dark tunnel. You can't see shit\n";
         bool response = getYesNo("Take out your lantern?");
         if(response) {
-
+            cout << "You see an inscription in the tunnel. It says...\n";
+            sleep(2);
+            cout << "It says";
+            for(int i = 0; i < 2; ++i) {
+                cout << ".";
+                cout.flush();
+                sleep(3);
+            }
+            cout << "\nIt's really hard to read...\n";
+            sleep(2);
+            cout << "\"Amanda\"\n";
+            sleep(1);
+            cout << "It just says \"Amanda\".\n";
+            sleep(2);
+            cout << "Well then. You turn around.\n";
+            sceneFour();
         } else {        
             response = getYesNo("You can't move forward. Turn back?");
             if(response) {
@@ -202,4 +246,11 @@ void sceneFive() {
             sceneFive();
         }
     }
+}
+
+void sceneSix() {
+    cout << "Not done yet...\n";
+}
+void sceneSeven() {
+    cout << "Not done yet...\n";
 }
