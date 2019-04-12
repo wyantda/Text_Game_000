@@ -131,20 +131,35 @@ void sceneTwo(){
             }
             else{
                 cout << "You decide not to step on the potentially pirate ridden main deck." << endl;
-                cout << "So you turn around and head back downstairs, avoiding any possible pirate gang bange that may have await you." << endl;
                 sceneFour();
             }
             break;
         }
         case 2:
             cout << "You walk up to the map, and look at it closely in the dim light.\n"
-                 << "You can tell that this boat is en route to the PIRATE ISLAND.\n";
+                 << "You can tell that this boat is en route to the PIRATE ISLAND.\n"
+                 << "The creativity in a name like that is overwelming.\n";
                  sceneTwo();
             break;
     }
 
 }
 void sceneThree(){
+    cout << "The light of the moon iluminates the deck of the ship.\n"
+         << "It seems most of the pirates are below deck, as their voices echo from the entrance to the brig.\n"
+         << "As you look for a way off the ship, two pirates emerge from a door across the deck.\n"
+         << "They seem to both be drunk. They have not noticed you yet.\n";
+         int response = getChoice(3,"Eavesdrop on their conversation","Try to sneak by them","Wait to they leave");
+        switch(response) {
+            case 1: {
+            cout << "You listen in on their conversation.\n"
+                 << "\" Oy! Ya wee Slag Clubber! \n";
+            }
+            case 2:{
+            }
+            case 3: {
+            }
+        }
 }
 void sceneFour(){
 }
