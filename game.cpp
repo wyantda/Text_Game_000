@@ -15,6 +15,7 @@ void sceneOne();
 void sceneTwo();
 void sceneThree();
 void sceneFour();
+void sceneFive();
 
 void sleep(int seconds);
 
@@ -72,7 +73,7 @@ void sceneOne(){
     int response = getChoice(3,"Do nothing","Shake chair vigorously","Kill yourself");
     switch (response) {
         case 1: {
-                    cout << "You do absolutly nothing. Being the completly chad genius you are, \nyou realize the best oppertunity is when the pirates least expect it." << endl;
+                    cout << "You do absolutly nothing. Being the completly chad genius you are, \nyou realize the best opportunity is when the pirates least expect it." << endl;
                     sleep(2);
                     cout << "You wait." << endl;
                     sleep(2);
@@ -131,6 +132,7 @@ void sceneTwo(){
             }
             else{
                 cout << "You decide not to step on the potentially pirate ridden main deck." << endl;
+                cout << "So you turn around and head back downstairs, avoiding any possible pirate gang bang that may have awaited you." << endl;
                 sceneFour();
             }
             break;
@@ -162,4 +164,38 @@ void sceneThree(){
         }
 }
 void sceneFour(){
+    cout << "While walking back down the stairs, you notice there is a hole in the ceiling.\n"
+         << "It is entirely unlit, and you can swear you hear rats scurrying about in it.\n";
+    bool response = getYesNo("Do you enter the hole rather than continuing back down to the room?");
+    if(response) {
+        cout << "You climb up into the ceiling hole, and begin feeling your way around.";
+        sceneFive();
+    } else {
+        sceneTwo();
+    }
+}
+
+void sceneFive() {
+    if(items["lantern"]) {
+        cout << "You are in a dark tunnel. You can't see shit\n";
+        bool response = getYesNo("Take out your lantern?");
+        if(response) {
+
+        } else {        
+            response = getYesNo("You can't move forward. Turn back?");
+            if(response) {
+                sceneFour();
+            } else {
+                sceneFive();
+            }
+        }
+    } else {
+        cout << "You are in a dark tunnel. You can't see shit.\n";
+        bool response = getYesNo("You can't move forward. Turn back?");
+        if(response) {
+            sceneFour();
+        } else {
+            sceneFive();
+        }
+    }
 }
