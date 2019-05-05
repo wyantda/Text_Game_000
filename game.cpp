@@ -4,8 +4,11 @@
 
 #include <thread>
 #include <chrono>
+#include <random>
 
 #include <map>
+#include <sstream>
+#include <fstream>
 
 using namespace std;
 
@@ -58,13 +61,42 @@ bool getYesNo(const string & text) {
     return response == 'y';
 }
 
+void printPirateDialogue() {
+
+    string result = "invalid string";
+
+    stringstream d;
+    string line;
+    ifstream dfile("pirate_dialogue.txt");
+    int itr = 0;
+    double res = 1.0;
+    while(getline(dfile,line)) {
+        if(line.compare("-----") == 0){
+            itr++;
+            res = (double)1/itr;
+            if((double)rand()/RAND_MAX <= res) {
+                result = d.str();
+            }
+            d.str("");
+            //cout << "Debug " << res << endl; 
+        } else {
+            d << line << "\n";
+        }
+    }
+    cout << result << endl;
+}
+
 void sleep(int seconds) {
     this_thread::sleep_for(chrono::seconds(seconds));
 }
 
 int main(int argc, char** argv) {
 
-    sceneOne();
+    srand(std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count());
+    //cout << (double)rand()/RAND_MAX << endl;
+    printPirateDialogue();
+
+    //sceneOne();
 
     return 0;
 }
@@ -161,11 +193,29 @@ void sceneThree(){
                  << "\"Oy! Ya Wee Slag Clubber! Ya Be Cuffin Ma Main Squeeze Ain't Ya!\"\n"
                  << "\"Yu Barnicle Brain! Iv'e Never Even Met Ya Girl! Ya Blastfamous Bahooka!\"\n"
                  << "\"";
-                    break;
+            sceneThree();
             }
             case 2: {
-                        cout << "You attempt to sneak by the pirates to the other side of the ship."
-                             << "One the";
+                        cout << "You attempt to sneak by the pirates to the other side of the ship.\n"
+                             << "One of the pirates spots you.\n";
+                        sleep(1);
+                        cout << "OI YOU! WHAT ARRRRRR YA DOIN HERE?\n";
+                        if(items["Name of Captain"]) {
+                            int response2 = getChoice(2,"Surrender","Tell them your name is Amanda");
+                            if(response == 1) {
+                                cout << "You surrender to the pirates\n";
+                                sceneOne();
+                            } else {
+                                cout << "You tell the pirates that you are Amanda.\n"
+                                     << "A look of shock and terror dawns on them, and they apologize before walking away.\n";
+                                sleep(2);
+                                cout << "You are very confused.\n";
+                                sceneSeven();
+                            }
+                        } else {
+                            cout << "You have no choice but to surrender to the pirates.\n";
+                            sceneOne();
+                        }
             }
             case 3: {
                 cout << "You wait for the pirates to leave.\n";
@@ -228,6 +278,7 @@ void sceneFive() {
             cout << "It just says \"Amanda\".\n";
             sleep(2);
             cout << "Well then. You turn around.\n";
+            items["Name of Captain"] = true;
             sceneFour();
         } else {        
             response = getYesNo("You can't move forward. Turn back?");
@@ -251,6 +302,23 @@ void sceneFive() {
 void sceneSix() {
     cout << "Not done yet...\n";
 }
+
+//empty deck
 void sceneSeven() {
-    cout << "Not done yet...\n";
+    cout << "Now that you are alone on the deck, you take a careful look around.\n"
+         << "The deck is about 70 feet long, and has two masts. Near the back of the boat are the captain's quarters, and stairs down to the holds.\n"
+         << "Above the captain's quarters is the poop deck.\n"
+         << "The stairs you came out of are in the middle of the deck.\n"
+         << "Towards the front of the boat are several barrels, and a giant cannon.\n";
+    int response = getChoice(4,"Go back down the stairs","Approach the captain's quarters","Go to the poop deck","Go to the front of the boat");
+    switch(response) {
+        case 1:
+            break;
+        case 2:
+            break;
+        case 3:
+            break;
+        case 4:
+            break;
+    }
 }
