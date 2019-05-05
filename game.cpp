@@ -159,7 +159,7 @@ void sceneThree(){
             case 1: {
             cout << "You listen in on their conversation.\n"
                  << "\"Oy! Ya Wee Slag Clubber! Ya Be Cuffin Ma Main Squeeze Ain't Ya!\"\n"
-                 << "\"Yu Barnicle Brain! Iv'e Never Even Met Ya Girl! Ya Blastfamous Bahooka!\"\n:
+                 << "\"Yu Barnicle Brain! Iv'e Never Even Met Ya Girl! Ya Blastfamous Bahooka!\"\n"
                  << "\"";
                     break;
             }
