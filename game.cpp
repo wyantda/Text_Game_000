@@ -94,10 +94,9 @@ void sleep(int seconds) {
 int main(int argc, char** argv) {
 
     srand(std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count());
-    //cout << (double)rand()/RAND_MAX << endl;
-    printPirateDialogue();
+    //printPirateDialogue();
 
-    //sceneOne();
+    sceneOne();
 
     return 0;
 }
@@ -190,10 +189,11 @@ void sceneThree(){
          int response = getChoice(3,"Eavesdrop on their conversation","Try to sneak by them","Wait until they leave");
         switch(response) {
             case 1: {
-            cout << "You listen in on their conversation.\n"
+            /*cout << "You listen in on their conversation.\n"
                  << "\"Oy! Ya Wee Slag Clubber! Ya Be Cuffin Ma Main Squeeze Ain't Ya!\"\n"
                  << "\"Yu Barnicle Brain! Iv'e Never Even Met Ya Girl! Ya Blastfamous Bahooka!\"\n"
-                 << "\"";
+                 << "\"";*/
+            printPirateDialogue();
             sceneThree();
             }
             case 2: {
@@ -203,7 +203,7 @@ void sceneThree(){
                         cout << "OI YOU! WHAT ARRRRRR YA DOIN HERE?\n";
                         if(items["Name of Captain"]) {
                             int response2 = getChoice(2,"Surrender","Tell them your name is Amanda");
-                            if(response == 1) {
+                            if(response2 == 1) {
                                 cout << "You surrender to the pirates\n";
                                 sceneOne();
                             } else {
@@ -317,16 +317,17 @@ void sceneSix() {
         
         case 2: 
                 cout << "You examine the barracks.\n";
-                cout << "The disguisting room is filled with several scurvy ridden pirates, each half dead\n"
-                cout << "from the several diseases they gather from their lack of general hygene. Mold grows\n"
-                cout << "Along the walls, likely drawn to the noxious odor. \n"
+                cout << "The disguisting room is filled with several scurvy ridden pirates, each half dead\n";
+                cout << "from the several diseases they gather from their lack of general hygene. Mold grows\n";
+                cout << "Along the walls, likely drawn to the noxious odor. \n";
                 sleep(3);
                 cout << "Yup, it's a barracks alright.\n";
                 sceneSix();
                 break;
 
         
-        case 3: SceneEight();
+        case 3: 
+                sceneEight();
                 break;
     }
 }
@@ -341,6 +342,7 @@ void sceneSeven() {
     int response = getChoice(4,"Go back down the stairs","Approach the captain's quarters","Go to the poop deck","Go to the front of the boat");
     switch(response) {
         case 1:
+            sceneTwo();
             break;
         case 2:
             break;
