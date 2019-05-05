@@ -18,6 +18,7 @@ void sceneFour();
 void sceneFive();
 void sceneSix();
 void sceneSeven();
+void sceneEight();
 
 
 void sleep(int seconds);
@@ -184,7 +185,14 @@ void sceneThree(){
                 }
                 int response2 = getChoice(3,"Follow the pirates","Turn back to the stairs","Explore the deck");
                 switch(response2) {
-                    case 1: sceneSix();
+   	                case 1: 
+			               	cout << "You follow the pirates below deck, making sure to keep\n";
+			              	cout << "a Safe Distance at all times.\n";
+			        	    sleep(2);
+			        	    cout << "After tailing the pirates for far too long a time,\n";
+			        	    cout << "(do THEY even know where their going!?) You arrive at what\n";
+			        	    cout << "seems to be the barracks. It's brimming with pirate activity.\n";
+                            sceneSix();
                             break;
                     case 2: sceneFour();
                             break;
@@ -249,8 +257,31 @@ void sceneFive() {
 }
 
 void sceneSix() {
-    cout << "Not done yet...\n";
+    int response = getChoice(3, "Return to the main deck","Examine the barracks","Challange the pirates");
+    switch (response){
+        case 1: 
+                cout << "You return to the main deck.";
+                sceneSeven();
+                break;
+        
+        case 2: 
+                cout << "You examine the barracks.\n";
+                cout << "The disguisting room is filled with several scurvy ridden pirates, each half dead\n"
+                cout << "from the several diseases they gather from their lack of general hygene. Mold grows\n"
+                cout << "Along the walls, likely drawn to the noxious odor. \n"
+                sleep(3);
+                cout << "Yup, it's a barracks alright.\n";
+                sceneSix();
+                break;
+
+        
+        case 3: SceneEight();
+                break;
+    }
 }
 void sceneSeven() {
+    cout << "Not done yet...\n";
+}
+void sceneEight() {
     cout << "Not done yet...\n";
 }
